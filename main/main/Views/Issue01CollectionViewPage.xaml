@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="main.Views.Issue01CollectionViewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:main.ViewModels;assembly=main"
+    Title="{Binding Title}"
+    d:DataContext="{d:DesignInstance Type=viewModels:ItemsViewModel}"
+    x:DataType="viewModels:ItemsViewModel"
+    mc:Ignorable="d">
+
+    <StackLayout>
+        <Button Clicked="Button_OnClicked" Text="Set BC" />
+        <CollectionView
+            x:Name="CollectionView"
+            Footer="{Binding Header}"
+            FooterTemplate="{StaticResource TheFooterTemplate}"
+            Header="{Binding Footer}"
+            HeaderTemplate="{StaticResource TheHeaderTemplate}"
+            ItemSizingStrategy="MeasureAllItems"
+            ItemTemplate="{StaticResource MonkeyItemTemplate}"
+            ItemsSource="{Binding Items}" />
+    </StackLayout>
+</ContentPage>

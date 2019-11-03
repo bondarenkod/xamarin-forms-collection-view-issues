@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="main.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:main="clr-namespace:main;assembly=main"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:main.Models;assembly=main"
+    xmlns:viewModels="clr-namespace:main.ViewModels;assembly=main"
+    mc:Ignorable="d">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  Global Styles  -->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <main:ObjectTypeToStringConverter x:Key="ObjectTypeToStringConverter" />
+
+            <DataTemplate x:Key="MonkeyCellTemplate" x:DataType="models:Item">
+                <ViewCell d:DataContext="{d:DesignInstance Type=models:Item}">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.RowSpan="2"
+                            Aspect="AspectFill"
+                            HeightRequest="60"
+                            Source="{Binding ImageUrl}"
+                            WidthRequest="60" />
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Name}"
+                            TextColor="Teal" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Italic"
+                            Text="{Binding Location}"
+                            TextColor="Teal"
+                            VerticalOptions="End" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="MonkeyItemTemplate" x:DataType="models:Item">
+                <Grid Padding="10" d:DataContext="{d:DesignInstance Type=models:Item}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.RowSpan="2"
+                        Aspect="AspectFill"
+                        HeightRequest="60"
+                        Source="{Binding ImageUrl}"
+                        WidthRequest="60" />
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        Text="{Binding Name}"
+                        TextColor="Teal" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontAttributes="Italic"
+                        Text="{Binding Location}"
+                        TextColor="Teal"
+                        VerticalOptions="End" />
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="TheHeaderTemplate" x:DataType="models:Item">
+                <StackLayout d:DataContext="{d:DesignInstance Type=models:Item}" BackgroundColor="LightPink">
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="The current header is:" />
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="{Binding ., Converter={StaticResource ObjectTypeToStringConverter}}" />
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="{Binding Id}" />
+                </StackLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="TheFooterTemplate" x:DataType="models:Item">
+                <StackLayout d:DataContext="{d:DesignInstance Type=models:Item}" BackgroundColor="LightSkyBlue">
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="The current footer is:" />
+
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="{Binding ., Converter={StaticResource ObjectTypeToStringConverter}}" />
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="{Binding Id}" />
+
+
+                </StackLayout>
+            </DataTemplate>
+
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

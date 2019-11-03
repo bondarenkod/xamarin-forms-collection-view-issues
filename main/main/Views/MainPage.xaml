@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="main.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:main.ViewModels;assembly=main"
+    Title="Header and footer (DataTemplate)"
+    d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+    x:DataType="viewModels:MainViewModel"
+    mc:Ignorable="d">
+
+    <ContentPage.Resources>
+        <DataTemplate x:Key="MainTemplate" x:DataType="viewModels:Option">
+            <Grid>
+                <Button
+                    d:DataContext="{d:DesignInstance Type=viewModels:Option}"
+                    Command="{Binding OnTapCommand, Mode=OneTime}"
+                    HorizontalOptions="Start"
+                    Text="{Binding Name, Mode=OneTime}" />
+            </Grid>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <ScrollView>
+
+        <StackLayout
+            Margin="20"
+            BindableLayout.ItemTemplate="{StaticResource MainTemplate}"
+            BindableLayout.ItemsSource="{Binding Options}"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+
+    </ScrollView>
+</ContentPage>
